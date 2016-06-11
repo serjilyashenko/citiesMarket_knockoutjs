@@ -59,18 +59,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="content container" data-bind="foreach: outputData.filteredData2">
-			<div class="element" data-bind="text: var1">
-				<div class="cityImage"><img src="" alt="city image" data-bind="attr: { src: image }"></div>
-				<div class="cityDescripts">
-					<div class="cityDescript cityNumber">Город номр: <span data-bind="text: num"></span></div>
+		<div id="cities-list" class="content container" data-bind="foreach: items">
+			<!--<div class="element" data-bind="text: var1">-->
+				<!--<div class="cityImage"><img src="" alt="city image" data-bind="attr: { src: image }"></div>-->
+				<!--<div class="cityDescripts">-->
+					<!--<div class="cityDescript cityNumber">Город номр: <span data-bind="text: num"></span></div>-->
 					<div class="cityDescript cityName">Имя: <span data-bind="text: name"></span></div>
-					<div class="cityDescript cityContinent"> Континент: <span class="continetFields" data-bind="text: continent"></span></div>
-					<div class="cityDescript cityYear">Год: <span data-bind="text: year"></span></div>
-					<div class="cityDescript cityPopulation">Население: <span data-bind="text: population"></span></div>
-				</div>
-				<div style="clear: left"></div>
-			</div>
+					<!--<div class="cityDescript cityContinent"> Континент: <span class="continetFields" data-bind="text: continent"></span></div>-->
+					<!--<div class="cityDescript cityYear">Год: <span data-bind="text: year"></span></div>-->
+					<!--<div class="cityDescript cityPopulation">Население: <span data-bind="text: population"></span></div>-->
+				<!--</div>-->
+				<!--<div style="clear: left"></div>-->
+			<!--</div>-->
 		</div>
 	</div>
 	</div>
@@ -93,6 +93,8 @@
 	</div>
 	<script src="./js/jquery-1.12.0.min.js"></script>
 	<script src="./js/knockout-3.4.0.js"></script>
+	<script src="./js/CitiesList.js"></script>
+	<script src="./js/Pagination.js"></script>
 	<script src="./js/main.js"></script>
 </body>
 
