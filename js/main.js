@@ -30,7 +30,7 @@
     eventDispatcher.subscribe('pagination: change', function (activeItem) {
         var firstNum = (activeItem - 1) * MAX_ELEMENTS_ON_PAGE;
         var list = fullList.slice(firstNum, firstNum + MAX_ELEMENTS_ON_PAGE);
-        eventDispatcher.trigger('pagination: filtered', list);
+        eventDispatcher.trigger('state:filtered', list);
     });
 
     eventDispatcher.trigger('formFilter: submit', formFilter);
@@ -38,3 +38,5 @@
     // TODO: remove
     // window.eventDispatcher = eventDispatcher;
 }());
+
+// TODO: remove spaces in event names

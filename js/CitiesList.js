@@ -3,9 +3,8 @@ function CitiesList(eventDispatcher) {
     this.eventDispatcher = eventDispatcher;
     
     this.items = ko.observableArray([]);
-
-    // TODO: subscribe on other event (after filtrations)
-    this.eventDispatcher.subscribe('pagination: filtered', function (items) {
+    
+    this.eventDispatcher.subscribe('state:filtered', function (items) {
         self.setItems(items);
     });
 }
