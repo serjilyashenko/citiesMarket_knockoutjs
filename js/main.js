@@ -11,7 +11,15 @@
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
 
     eventDispatcher.subscribe('formFilter: submit', function (formFilter) {
-        console.dir(formFilter);
+        var data = {
+            "populationMin": formFilter.populationMin(),
+            "populationMax": formFilter.populationMax(),
+            "yearMin": formFilter.yearMin(),
+            "yearMax": formFilter.yearMax()
+        };
+        $.post('./backend/refreshData.php', data, function (response) {
+            console.dir(response);
+        }, 'json');
     });
 
     // TODO: remove
