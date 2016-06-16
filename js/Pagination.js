@@ -21,6 +21,7 @@ function Pagination(eventDispatcher, maxElementsOnPage) {
 }
 
 Pagination.prototype.shiftPagContainer = function (shift) {
+    console.log('!', this);
     var lastItem = $(".pagecontainer div").last();
     var contWrap = $(".pagecontainer_wrap");
     var container = $(".pagecontainer");
@@ -52,6 +53,7 @@ Pagination.prototype.showItems = function (elementsCount) {
 
 // TODO: check structure of that code
 Pagination.prototype.selectItem = function (activeItem, event) {
+    console.log(this);
     this.activeItem(activeItem);
     this.eventDispatcher.trigger('pagination: change', activeItem);
 

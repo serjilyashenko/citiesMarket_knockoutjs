@@ -16,6 +16,5 @@ function FormFilter(eventDispatcher) {
 }
 
 FormFilter.prototype.submitForm = function () {
-    // TODO: why it see parameter eventDispatcher ???
-    eventDispatcher.trigger('formFilter: submit', this);
+    this.eventDispatcher.trigger('formFilter: submit', this);
 };

@@ -34,5 +34,5 @@
     eventDispatcher.trigger('formFilter: submit', formFilter);
 
     // TODO: remove
-    window.eventDispatcher = eventDispatcher;
+    // window.eventDispatcher = eventDispatcher;
 }());
