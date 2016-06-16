@@ -1,9 +1,7 @@
 (function () {
 
     var eventDispatcher = new EventDispatcher();
-    var citiesList = new CitiesList(function (event) {  // TODO: remove test
-        eventDispatcher.trigger(event);
-    });
+    var citiesList = new CitiesList(eventDispatcher);
     ko.applyBindings(citiesList, document.getElementById('cities-list'));
     var formFilter = new FormFilter(eventDispatcher);
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
