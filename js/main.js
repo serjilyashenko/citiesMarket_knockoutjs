@@ -1,11 +1,14 @@
 (function () {
+    var MAX_ELEMENTS_ON_PAGE = 10;
+
+    var fullList = [];
 
     var eventDispatcher = new EventDispatcher();
     var citiesList = new CitiesList(eventDispatcher);
     ko.applyBindings(citiesList, document.getElementById('cities-list'));
     var formFilter = new FormFilter(eventDispatcher);
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
-    var pagination = new Pagination(eventDispatcher);
+    var pagination = new Pagination(eventDispatcher, MAX_ELEMENTS_ON_PAGE);
     ko.applyBindings(pagination, document.getElementById('pagination'));
 
     eventDispatcher.subscribe('formFilter: submit', function (formFilter) {
@@ -16,8 +19,16 @@
             "yearMax": formFilter.yearMax()
         };
         $.post('./backend/refreshData.php', data, function (response) {
+            fullList = response.items;
             eventDispatcher.trigger('server: dataGot', response);
         }, 'json');
+    });
+    eventDispatcher.subscribe('server: dataGot', function () {
+    });
+    eventDispatcher.subscribe('pagination: change', function (activeItem) {
+        var firstNum = (activeItem - 1) * MAX_ELEMENTS_ON_PAGE;
+        var list = fullList.slice(firstNum, firstNum + MAX_ELEMENTS_ON_PAGE);
+        eventDispatcher.trigger('pagination: filtered', list);
     });
 
     eventDispatcher.trigger('formFilter: submit', formFilter);

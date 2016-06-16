@@ -14,9 +14,9 @@ function Pagination(eventDispatcher, maxElementsOnPage) {
         self.selectItem(activeItem, event);
     };
 
-    // TODO: subscribe on other event (after filtrations)
     this.eventDispatcher.subscribe('server: dataGot', function (data) {
-        self.showItems(data.items.length);
+        self.selectItem(1);
+        self.showItems(data.items.length);  // TODO: subscribe on other event (after filtrations of tabs)
     });
 }
 
