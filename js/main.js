@@ -10,6 +10,8 @@
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
     var pagination = new Pagination(eventDispatcher, MAX_ELEMENTS_ON_PAGE);
     ko.applyBindings(pagination, document.getElementById('pagination'));
+    var menuFilter = new MenuFilter(eventDispatcher);
+    ko.applyBindings(menuFilter, document.getElementById('menu-filter'));
 
     eventDispatcher.subscribe('formFilter: submit', function (formFilter) {
         var data = {

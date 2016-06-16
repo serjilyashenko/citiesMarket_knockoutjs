@@ -9,11 +9,6 @@ function Pagination(eventDispatcher, maxElementsOnPage) {
         return (self.items().length * 30 + 'px');
     }, this);
 
-    // TODO: check structure of that code
-    this.selectItemCall = function (activeItem, event) {
-        self.selectItem(activeItem, event);
-    };
-
     this.eventDispatcher.subscribe('server: dataGot', function (data) {
         self.selectItem(1);
         self.showItems(data.items.length);  // TODO: subscribe on other event (after filtrations of tabs)
@@ -21,7 +16,6 @@ function Pagination(eventDispatcher, maxElementsOnPage) {
 }
 
 Pagination.prototype.shiftPagContainer = function (shift) {
-    console.log('!', this);
     var lastItem = $(".pagecontainer div").last();
     var contWrap = $(".pagecontainer_wrap");
     var container = $(".pagecontainer");
@@ -51,9 +45,7 @@ Pagination.prototype.showItems = function (elementsCount) {
     return res;
 };
 
-// TODO: check structure of that code
 Pagination.prototype.selectItem = function (activeItem, event) {
-    console.log(this);
     this.activeItem(activeItem);
     this.eventDispatcher.trigger('pagination: change', activeItem);
 

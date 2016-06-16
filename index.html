@@ -49,9 +49,9 @@
 			</div>
 			<div class="menu-wrapper">
 				<div class="container">
-					<div class="menu">
-						<ul data-bind="foreach: tabs.elements()">
-							<li class="tab" data-bind="css: {active: $data.searchMethod == $root.tabs.activeMethod()}, click: $root.tabs.onClick">
+					<div id="menu-filter" class="menu">
+						<ul data-bind="foreach: items">
+							<li class="tab" data-bind="css: {active: $data.searchMethod == $root.activeItem()}, click: $root.onClick.bind($root)">
 								<a href="#" data-bind="text: $data.title"></a>
 							</li>
 						</ul>
@@ -97,6 +97,7 @@
 	<script src="./js/CitiesList.js"></script>
 	<script src="./js/Pagination.js"></script>
 	<script src="./js/FormFilter.js"></script>
+	<script src="./js/MenuFilter.js"></script>
 	<script src="./js/main.js"></script>
 </body>
 
