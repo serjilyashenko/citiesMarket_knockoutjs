@@ -10,7 +10,9 @@
     var formFilter = new FormFilter(eventDispatcher);
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
 
-    eventDispatcher.subscribe('formFilter: submit', null);
+    eventDispatcher.subscribe('formFilter: submit', function (formFilter) {
+        console.dir(formFilter);
+    });
 
     // TODO: remove
     window.eventDispatcher = eventDispatcher;

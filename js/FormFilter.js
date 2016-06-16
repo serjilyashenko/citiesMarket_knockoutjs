@@ -8,5 +8,5 @@ function FormFilter(eventDispatcher) {
 }
 
 FormFilter.prototype.submitForm = function () {
-    eventDispatcher.trigger('formFilter: submit');
+    eventDispatcher.trigger('formFilter: submit', this);
 };
