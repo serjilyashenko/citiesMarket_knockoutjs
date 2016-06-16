@@ -76,16 +76,16 @@
 	</div>
 	<div class="footer">
 		<div class="container">
-			<div class="paginator" data-bind="with: paginator">
-				<div class="prev" data-bind="click: shiftLeft">
+			<div id="pagination" class="paginator">
+				<div class="prev" data-bind="click: shiftPagContainer(200)">
 					<div>&#60;&#60;</div>
 				</div>
 					<div class="pagecontainer_wrap" data-bind="style: {width: width}">
-						<div class="pagecontainer" data-bind="foreach: paginationItems">
-							<div data-bind="text: ($data + 1), click: $parent.select, css:{active: $parent.activePaginationItem() == $data}"></div>
+						<div class="pagecontainer" data-bind="foreach: items">
+							<div data-bind="text: $data, click: $parent.selectItemCall, css:{active: $parent.activeItem() == $data}"></div>
 						</div>
 					</div>
-				<div class="next" data-bind="click: shiftRight">
+				<div class="next" data-bind="click: shiftPagContainer(-200)">
 					<div>&#62;&#62;</div>
 				</div>
 			</div>
