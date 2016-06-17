@@ -9,9 +9,9 @@ function Pagination(eventDispatcher, maxElementsOnPage) {
         return (self.items().length * 30 + 'px');
     }, this);
 
-    this.eventDispatcher.subscribe('server:dataGot', function (data) {
+    this.eventDispatcher.subscribe('state:menuFiltered', function (list) {
+        self.showItems(list.length);
         self.selectItem(1);
-        self.showItems(data.items.length);  // TODO: subscribe on other event (after filtrations of tabs)
     });
 }
 

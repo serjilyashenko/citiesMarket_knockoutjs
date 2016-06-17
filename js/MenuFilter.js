@@ -1,4 +1,5 @@
 function MenuFilter(eventDispatcher) {
+    var self = this;
     this.eventDispatcher = eventDispatcher;
 
     this.activeItem = ko.observable('все');
@@ -32,8 +33,14 @@ function MenuFilter(eventDispatcher) {
             searchMethod: "антарктида"
         }
     ]);
+
+    this.eventDispatcher.subscribe('state:dataGot', function () {
+        self.onClick({searchMethod: self.activeItem()});
+    });
 }
 
 MenuFilter.prototype.onClick = function (item) {
-    this.activeItem(item.searchMethod);
+    var searchMethod = item.searchMethod;
+    this.activeItem(searchMethod);
+    this.eventDispatcher.trigger('menuFilter:change', searchMethod);
 };

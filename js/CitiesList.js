@@ -4,7 +4,7 @@ function CitiesList(eventDispatcher) {
     
     this.items = ko.observableArray([]);
     
-    this.eventDispatcher.subscribe('state:filtered', function (items) {
+    this.eventDispatcher.subscribe('state:paginationFiltered', function (items) {
         self.setItems(items);
     });
 }

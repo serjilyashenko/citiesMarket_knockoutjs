@@ -2,6 +2,7 @@
     var MAX_ELEMENTS_ON_PAGE = 10;
 
     var fullList = [];
+    var menuFilteredList = [];
 
     var eventDispatcher = new EventDispatcher();
     var citiesList = new CitiesList(eventDispatcher);
@@ -22,15 +23,24 @@
         };
         $.post('./backend/refreshData.php', data, function (response) {
             fullList = response.items;
-            eventDispatcher.trigger('server:dataGot', response);
+            eventDispatcher.trigger('state:dataGot', response);
         }, 'json');
     });
-    eventDispatcher.subscribe('server:dataGot', function () {
+    eventDispatcher.subscribe('menuFilter:change', function (searchMethod) {
+        menuActiveItem = searchMethod;
+        if (searchMethod === "все") {
+            menuFilteredList = fullList;
+        } else {
+                menuFilteredList = fullList.filter(function (item) {
+                return (item.continent === searchMethod);
+            });
+        }
+        eventDispatcher.trigger('state:menuFiltered', menuFilteredList);
     });
     eventDispatcher.subscribe('pagination:change', function (activeItem) {
         var firstNum = (activeItem - 1) * MAX_ELEMENTS_ON_PAGE;
-        var list = fullList.slice(firstNum, firstNum + MAX_ELEMENTS_ON_PAGE);
-        eventDispatcher.trigger('state:filtered', list);
+        var list = menuFilteredList.slice(firstNum, firstNum + MAX_ELEMENTS_ON_PAGE);
+        eventDispatcher.trigger('state:paginationFiltered', list);
     });
 
     eventDispatcher.trigger('formFilter:submit', formFilter);
