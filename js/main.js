@@ -1,52 +1,20 @@
 (function () {
-    var MAX_ELEMENTS_ON_PAGE = 10;
-
-    var fullList = [];
-    var menuFilteredList = [];
 
     var eventDispatcher = new EventDispatcher();
     var citiesList = new CitiesList(eventDispatcher);
     ko.applyBindings(citiesList, document.getElementById('cities-list'));
     var formFilter = new FormFilter(eventDispatcher);
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
-    var pagination = new Pagination(eventDispatcher, MAX_ELEMENTS_ON_PAGE);
+    var pagination = new Pagination(eventDispatcher);
     ko.applyBindings(pagination, document.getElementById('pagination'));
     var menuFilter = new MenuFilter(eventDispatcher);
     ko.applyBindings(menuFilter, document.getElementById('menu-filter'));
 
-    eventDispatcher.subscribe('formFilter:submit', function (formFilter) {
-        var data = {
-            "populationMin": formFilter.populationMin(),
-            "populationMax": formFilter.populationMax(),
-            "yearMin": formFilter.yearMin(),
-            "yearMax": formFilter.yearMax()
-        };
-        $.post('./backend/refreshData.php', data, function (response) {
-            fullList = response.items;
-            eventDispatcher.trigger('state:dataGot', response);
-        }, 'json');
-    });
-    eventDispatcher.subscribe('menuFilter:change', function (searchMethod) {
-        menuActiveItem = searchMethod;
-        if (searchMethod === "все") {
-            menuFilteredList = fullList;
-        } else {
-                menuFilteredList = fullList.filter(function (item) {
-                return (item.continent === searchMethod);
-            });
-        }
-        eventDispatcher.trigger('state:menuFiltered', menuFilteredList);
-    });
-    eventDispatcher.subscribe('pagination:change', function (activeItem) {
-        var firstNum = (activeItem - 1) * MAX_ELEMENTS_ON_PAGE;
-        var list = menuFilteredList.slice(firstNum, firstNum + MAX_ELEMENTS_ON_PAGE);
-        eventDispatcher.trigger('state:paginationFiltered', list);
-    });
-
-    eventDispatcher.trigger('formFilter:submit', formFilter);
+    var state = new State(eventDispatcher);
+    // TODO: check that architecture
+    state.start(formFilter);
 
     // TODO: remove
     // window.eventDispatcher = eventDispatcher;
 }());
 
-// TODO: move State module in State.js from main.js

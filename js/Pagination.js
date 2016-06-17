@@ -1,15 +1,18 @@
-function Pagination(eventDispatcher, maxElementsOnPage) {
+function Pagination(eventDispatcher) {
     var self = this;
     this.eventDispatcher = eventDispatcher;
 
-    this.MAX_ELEMENTS_ON_PAGE = maxElementsOnPage || 10;
+    this.MAX_ELEMENTS_ON_PAGE;
+    
     this.activeItem = ko.observable(1);
     this.items = ko.observableArray([1]);
     this.width = ko.computed(function () {
         return (self.items().length * 30 + 'px');
     }, this);
 
-    this.eventDispatcher.subscribe('state:menuFiltered', function (list) {
+    this.eventDispatcher.subscribe('state:menuFiltered', function (list, maxElementsOnList) {
+        console.log(maxElementsOnList)
+        self.MAX_ELEMENTS_ON_PAGE = maxElementsOnList || 10;
         self.showItems(list.length);
         self.selectItem(1);
     });
