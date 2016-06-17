@@ -9,7 +9,7 @@ function Pagination(eventDispatcher, maxElementsOnPage) {
         return (self.items().length * 30 + 'px');
     }, this);
 
-    this.eventDispatcher.subscribe('server: dataGot', function (data) {
+    this.eventDispatcher.subscribe('server:dataGot', function (data) {
         self.selectItem(1);
         self.showItems(data.items.length);  // TODO: subscribe on other event (after filtrations of tabs)
     });
@@ -47,7 +47,7 @@ Pagination.prototype.showItems = function (elementsCount) {
 
 Pagination.prototype.selectItem = function (activeItem, event) {
     this.activeItem(activeItem);
-    this.eventDispatcher.trigger('pagination: change', activeItem);
+    this.eventDispatcher.trigger('pagination:change', activeItem);
 
     var targetPosition = $(".pagecontainer_wrap").offset().left + $(".pagecontainer_wrap").width() / 2;
     var activeItemElement = $($(".pagecontainer div")[activeItem - 1]);

@@ -7,7 +7,7 @@ function FormFilter(eventDispatcher) {
     this.yearMin = ko.observable(0);
     this.yearMax = ko.observable(2016);
 
-    eventDispatcher.subscribe('server: dataGot', function (data) {
+    eventDispatcher.subscribe('server:dataGot', function (data) {
         self.populationMin(data.meta.populationMin);
         self.populationMax(data.meta.populationMax);
         self.yearMin(data.meta.yearMin);
@@ -16,5 +16,5 @@ function FormFilter(eventDispatcher) {
 }
 
 FormFilter.prototype.submitForm = function () {
-    this.eventDispatcher.trigger('formFilter: submit', this);
+    this.eventDispatcher.trigger('formFilter:submit', this);
 };

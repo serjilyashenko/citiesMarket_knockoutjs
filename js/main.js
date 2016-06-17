@@ -13,7 +13,7 @@
     var menuFilter = new MenuFilter(eventDispatcher);
     ko.applyBindings(menuFilter, document.getElementById('menu-filter'));
 
-    eventDispatcher.subscribe('formFilter: submit', function (formFilter) {
+    eventDispatcher.subscribe('formFilter:submit', function (formFilter) {
         var data = {
             "populationMin": formFilter.populationMin(),
             "populationMax": formFilter.populationMax(),
@@ -22,21 +22,21 @@
         };
         $.post('./backend/refreshData.php', data, function (response) {
             fullList = response.items;
-            eventDispatcher.trigger('server: dataGot', response);
+            eventDispatcher.trigger('server:dataGot', response);
         }, 'json');
     });
-    eventDispatcher.subscribe('server: dataGot', function () {
+    eventDispatcher.subscribe('server:dataGot', function () {
     });
-    eventDispatcher.subscribe('pagination: change', function (activeItem) {
+    eventDispatcher.subscribe('pagination:change', function (activeItem) {
         var firstNum = (activeItem - 1) * MAX_ELEMENTS_ON_PAGE;
         var list = fullList.slice(firstNum, firstNum + MAX_ELEMENTS_ON_PAGE);
         eventDispatcher.trigger('state:filtered', list);
     });
 
-    eventDispatcher.trigger('formFilter: submit', formFilter);
+    eventDispatcher.trigger('formFilter:submit', formFilter);
 
     // TODO: remove
     // window.eventDispatcher = eventDispatcher;
 }());
 
-// TODO: remove spaces in event names
+// TODO: move State module in State.js from main.js
