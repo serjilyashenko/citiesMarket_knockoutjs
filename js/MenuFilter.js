@@ -1,8 +1,6 @@
 function MenuFilter(eventDispatcher) {
-    var self = this;
     this.eventDispatcher = eventDispatcher;
-
-    this.activeItem = ko.observable('все');
+    
     this.items = ko.observableArray([
         {
             title: "все",
@@ -33,14 +31,10 @@ function MenuFilter(eventDispatcher) {
             searchMethod: "антарктида"
         }
     ]);
-
-    this.eventDispatcher.subscribe('state:dataGot', function () {
-        self.onClick({searchMethod: self.activeItem()});
-    });
+    this.activeSearchMethod = ko.observable('все');
 }
 
-MenuFilter.prototype.onClick = function (item) {
-    var searchMethod = item.searchMethod;
-    this.activeItem(searchMethod);
-    this.eventDispatcher.trigger('menuFilter:change', searchMethod);
+MenuFilter.prototype.changeSearchMethod = function (searchMethod) {
+    this.activeSearchMethod(searchMethod);
+    this.eventDispatcher.trigger('menu-filter:change', searchMethod);
 };

@@ -1,20 +1,21 @@
 (function () {
 
-    var eventDispatcher = new EventDispatcher();
-    var citiesList = new CitiesList(eventDispatcher);
+    var eventDispatcher = new EventDispatcher(),
+        citiesList = new CitiesList(eventDispatcher),
+        formFilter = new FormFilter(eventDispatcher),
+        pagination = new Pagination(eventDispatcher),
+        menuFilter = new MenuFilter(eventDispatcher),
+        state = new State(eventDispatcher);
+    
+    // TODO: check that architecture
+    state.init();
+
     ko.applyBindings(citiesList, document.getElementById('cities-list'));
-    var formFilter = new FormFilter(eventDispatcher);
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
-    var pagination = new Pagination(eventDispatcher);
     ko.applyBindings(pagination, document.getElementById('pagination'));
-    var menuFilter = new MenuFilter(eventDispatcher);
     ko.applyBindings(menuFilter, document.getElementById('menu-filter'));
 
-    var state = new State(eventDispatcher);
-    // TODO: check that architecture
-    state.start(formFilter);
-
     // TODO: remove
-    // window.eventDispatcher = eventDispatcher;
+    window.state = state;
+    
 }());
-

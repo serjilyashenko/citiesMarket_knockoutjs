@@ -17,7 +17,7 @@
 						<div class="title">Выбери себе <br>Город: </div>
 					</div>
 						<div class="searchForm">
-							<form id="form-filter" action="" data-bind="submit: $root.submitForm.bind($root)">
+							<form id="form-filter" action="" data-bind="submit: $root.submit.bind($root)">
 								<div class="formWrapper">
 									<div class="yearForm formCol">
 										<div class="formTittle">года постройки</div>
@@ -51,7 +51,7 @@
 				<div class="container">
 					<div id="menu-filter" class="menu">
 						<ul data-bind="foreach: items">
-							<li class="tab" data-bind="css: {active: $data.searchMethod == $root.activeItem()}, click: $root.onClick.bind($root)">
+							<li class="tab" data-bind="css: {active: $data.searchMethod === $root.activeSearchMethod()}, click: $root.changeSearchMethod.bind($root, $data.searchMethod)">
 								<a href="#" data-bind="text: $data.title"></a>
 							</li>
 						</ul>
@@ -80,11 +80,14 @@
 				<div class="prev" data-bind="click: $root.shiftPagContainer.bind($root, 200)">
 					<div>&#60;&#60;</div>
 				</div>
-					<div class="pagecontainer_wrap" data-bind="style: {width: width}">
-						<div class="pagecontainer" data-bind="foreach: items">
-							<div data-bind="text: $data, click: $root.selectItem.bind($root), css:{active: $root.activeItem() == $data}"></div>
+				<div class="pagecontainer_wrap" data-bind="style: {width: width}">
+					<div class="pagecontainer" data-bind="foreach: items">
+						<div data-bind="text: $data,
+						                click: $root.selectItem.bind($root),
+						                css:{active: $root.activeItem() == $data}">
 						</div>
 					</div>
+				</div>
 				<div class="next" data-bind="click: $root.shiftPagContainer.bind($root, -200)">
 					<div>&#62;&#62;</div>
 				</div>
