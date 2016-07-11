@@ -1,15 +1,19 @@
-# citiesMarket_with_knockoutjs
+# citiesMarket_knockoutjs
 
 ## what's new?
-> knockout js mvvm framework
+> Cool patterns mediator + observer. Resolves the issue of too related  modules in citiesMarket_with_knockoutjs repository
+
+## from citiesMarket_with_knockoutjs :
+> knockout js mvvm frameworkv for view display
 
 ## from citiesMarket :
+> knockout js mvvm framework
 
-> tabs on jQuery
+> tabs 
 
 > front-end filtration
 
-> pagination
+> pagination on jQuery
 
 > back-end lorem ipsum on php
 
