@@ -6,43 +6,43 @@
     <title>Cities Market</title>
 </head>
 <body>
-<div class="headercontent">
+<div class="page-wrapper">
     <div class="header">
-        <div class="top">
+        <div class="header__top">
             <div class="container">
-                <div class="top-wrapper">
-                    <div class="logo">
+                <div class="logo">
+                    <div class="logo__img">
                         <img src="./img/The-Virtual-City-Logo.png" alt="logo">
                     </div>
-                    <div class="title">Выбери себе <br>Город:</div>
+                    <div class="logo__title">Выбери себе <br>Город:</div>
                 </div>
-                <div class="search-form">
+                <div class="search-form__wrapper">
                     <form id="form-filter" action="" data-bind="submit: $root.submit.bind($root)">
-                        <div class="form-wrapper">
-                            <div class="year-form form-col">
-                                <div class="form-tittle">года постройки</div>
-                                <div class="form-input-wrapper">
-                                    <div class="form-param-tittle">c</div>
-                                    <input class="form-input" type="number" placeholder="0" name="yearMin" value="0"
+                        <div class="search-form">
+                            <div class="search-form__column">
+                                <div class="search-form__title">года постройки</div>
+                                <div class="search-form__group">
+                                    <div class="search-form__group-title">c</div>
+                                    <input class="search-form__input" type="number" placeholder="0" value="0"
                                            data-bind="value: yearMin">
                                 </div>
-                                <div class="form-input-wrapper">
-                                    <div class="form-param-tittle">по</div>
-                                    <input class="form-input" type="text" placeholder="2016" name="yearMax" value="2016"
+                                <div class="search-form__group">
+                                    <div class="search-form__group-title">по</div>
+                                    <input class="search-form__input" type="text" placeholder="2016" value="2016"
                                            data-bind="value: yearMax">
                                 </div>
                             </div>
-                            <div class="populationForm form-col">
-                                <div class="form-tittle">с населением</div>
-                                <div class="form-input-wrapper">
-                                    <div class="form-param-tittle">от</div>
-                                    <input class="form-input" type="text" placeholder="100" name="populationMin"
-                                           value="100" data-bind="value: populationMin">
+                            <div class="search-form__column">
+                                <div class="search-form__title">с населением</div>
+                                <div class="search-form__group">
+                                    <div class="search-form__group-title">от</div>
+                                    <input class="search-form__input" type="text" placeholder="100" value="100"
+                                           data-bind="value: populationMin">
                                 </div>
-                                <div class="form-input-wrapper">
-                                    <div class="form-param-tittle">до</div>
-                                    <input class="form-input" type="text" placeholder="25000000" name="populationMax"
-                                           value="25000000" data-bind="value: populationMax">
+                                <div class="search-form__group">
+                                    <div class="search-form__group-title">до</div>
+                                    <input class="search-form__input" type="text" placeholder="25000000" value="25000000"
+                                           data-bind="value: populationMax">
                                 </div>
                             </div>
                             <input class="unvisible-submit" type="submit">
@@ -51,13 +51,14 @@
                 </div>
             </div>
         </div>
-        <div class="menu-wrapper">
+        <div class="menu-filter__wrapper">
             <div class="container">
-                <div id="menu-filter" class="menu">
+                <div id="menu-filter" class="menu-filter">
                     <ul data-bind="foreach: items">
-                        <li class="tab"
-                            data-bind="css: {active: $data.searchMethod === $root.activeSearchMethod()}, click: $root.changeSearchMethod.bind($root, $data.searchMethod)">
-                            <a href="#" data-bind="text: $data.title"></a>
+                        <li class="menu-filter__tab"
+                            data-bind="css: {'menu-filter__tab_active': $data.searchMethod === $root.activeSearchMethod()},
+                                       click: $root.changeSearchMethod.bind($root, $data.searchMethod)">
+                            <a href="#" class="menu-filter__link" data-bind="text: $data.title"></a>
                         </li>
                     </ul>
                 </div>
@@ -66,35 +67,43 @@
     </div>
     <div id="cities-list" class="content container" data-bind="foreach: items">
         <div class="element">
-            <div class="city-image"><img src="" alt="city image" data-bind="attr: { src: image }"></div>
-            <div class="city-descripts">
-                <div class="city-descript city-number">Город номр: <span data-bind="text: num"></span></div>
-                <div class="city-descript city-name">Имя: <span data-bind="text: name"></span></div>
-                <div class="city-descript city-continent"> Континент: <span class="continet-fields"
-                                                                            data-bind="text: continent"></span></div>
-                <div class="city-descript city-year">Год: <span data-bind="text: year"></span></div>
-                <div class="city-descript city-population">Население: <span data-bind="text: population"></span></div>
+            <div class="element__image"><img src="" alt="city image" data-bind="attr: { src: image }"></div>
+            <div class="element__content">
+                <div class="element__line">
+                    Город номр: <span data-bind="text: num"></span>
+                </div>
+                <div class="element__line">
+                    Имя: <span data-bind="text: name"></span>
+                </div>
+                <div class="element__line">
+                    Континент: <span class="element__continent-fields" data-bind="text: continent"></span>
+                </div>
+                <div class="element__line">
+                    Год: <span data-bind="text: year"></span>
+                </div>
+                <div class="element__line">
+                    Население: <span data-bind="text: population"></span>
+                </div>
             </div>
             <div style="clear: left"></div>
         </div>
     </div>
 </div>
-</div>
 <div class="footer">
     <div class="container">
-        <div id="pagination" class="paginator">
-            <div class="prev" data-bind="click: $root.shiftPagContainer.bind($root, 200)">
+        <div id="paginator" class="paginator">
+            <div class="paginator__prev" data-bind="click: $root.shiftPagContainer.bind($root, 200)">
                 <div>&#60;&#60;</div>
             </div>
-            <div class="pagecontainer-wrap" data-bind="style: {width: width}">
-                <div class="pagecontainer" data-bind="foreach: items">
-                    <div data-bind="text: $data,
-                                        click: $root.selectItem.bind($root),
-                                        css:{active: $root.activeItem() == $data}">
+            <div class="paginator__content" data-bind="style: {width: width}">
+                <div class="paginator__list" data-bind="foreach: items">
+                    <div class="paginator__item" data-bind="text: $data,
+                                    click: $root.selectItem.bind($root),
+                                    css:{active: $root.activeItem() == $data}">
                     </div>
                 </div>
             </div>
-            <div class="next" data-bind="click: $root.shiftPagContainer.bind($root, -200)">
+            <div class="paginator__next" data-bind="click: $root.shiftPagContainer.bind($root, -200)">
                 <div>&#62;&#62;</div>
             </div>
         </div>

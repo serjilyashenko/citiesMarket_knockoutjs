@@ -12,7 +12,7 @@
 
     ko.applyBindings(citiesList, document.getElementById('cities-list'));
     ko.applyBindings(formFilter, document.getElementById('form-filter'));
-    ko.applyBindings(pagination, document.getElementById('pagination'));
+    ko.applyBindings(pagination, document.getElementById('paginator'));
     ko.applyBindings(menuFilter, document.getElementById('menu-filter'));
 
     // TODO: remove

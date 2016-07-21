@@ -17,9 +17,9 @@ function Pagination(eventDispatcher) {
 }
 
 Pagination.prototype.shiftPagContainer = function (shift) {
-    var lastItem = $(".pagecontainer div").last(),
-        contWrap = $(".pagecontainer-wrap"),
-        container = $(".pagecontainer");
+    var lastItem = $(".paginator__list div").last(),
+        contWrap = $(".paginator__content"),
+        container = $(".paginator__list");
 
     container.css('left', '+=' + shift + "px");
     if (container.offset().left + shift > contWrap.offset().left)
@@ -49,8 +49,8 @@ Pagination.prototype.setItems = function (elementsCount) {
 };
 
 Pagination.prototype.setActiveItem = function (activeItem) {
-    var targetPosition = $(".pagecontainer-wrap").offset().left + $(".pagecontainer-wrap").width() / 2,
-        activeItemElement = $($(".pagecontainer div")[activeItem - 1]),
+    var targetPosition = $(".paginator__content").offset().left + $(".paginator__content").width() / 2,
+        activeItemElement = $($(".paginator__list div")[activeItem - 1]),
         shift = targetPosition - activeItemElement.offset().left;
 
     this.activeItem(activeItem);
