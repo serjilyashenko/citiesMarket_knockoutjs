@@ -18,7 +18,7 @@ function Pagination(eventDispatcher) {
 
 Pagination.prototype.shiftPagContainer = function (shift) {
     var lastItem = $(".pagecontainer div").last(),
-        contWrap = $(".pagecontainer_wrap"),
+        contWrap = $(".pagecontainer-wrap"),
         container = $(".pagecontainer");
 
     container.css('left', '+=' + shift + "px");
@@ -49,7 +49,7 @@ Pagination.prototype.setItems = function (elementsCount) {
 };
 
 Pagination.prototype.setActiveItem = function (activeItem) {
-    var targetPosition = $(".pagecontainer_wrap").offset().left + $(".pagecontainer_wrap").width() / 2,
+    var targetPosition = $(".pagecontainer-wrap").offset().left + $(".pagecontainer-wrap").width() / 2,
         activeItemElement = $($(".pagecontainer div")[activeItem - 1]),
         shift = targetPosition - activeItemElement.offset().left;
 

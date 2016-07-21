@@ -118,7 +118,7 @@ html,body{
     float: left;
 }
 
-.pagecontainer_wrap {
+.pagecontainer-wrap {
     margin-left: 5px;
     margin-right: 5px;
     min-width: 0px;
@@ -155,22 +155,22 @@ html,body{
     background-color: rgb(129, 126, 126);
 }
 
-.cityImage {
+.city-image {
 	float: left;
 }
 
-.cityImage img {
+.city-image img {
 /*	margin-bottom: 10px;*/
 	height: 120px;
 	width: 120px;
 	border: 1px solid black;
 }
 
-.cityDescripts {
+.city-descripts {
 	margin-left: 145px;
 }
 
-.cityDesctipt {
+.city-descript {
 	margin-bottom: 5px;
 }
 
@@ -196,7 +196,7 @@ html,body{
 	width: 91px;
 }
 
-.top_wrapper {
+.top-wrapper {
 /*	margin-top: 45px;*/
 	overflow: hidden;
 	float: left;
@@ -222,24 +222,24 @@ html,body{
 	float: left;
 }
 
-.yearForm {
+.year-form {
 	float: left;
 }
 
-.formWrapper {
+.form-wrapper {
 	overflow: hidden;
 }
 
-.formTittle {
+.form-tittle {
 	margin-bottom: 6px;
 }
 
-.formParamTittle {
+.form-param-tittle {
 	float: left;
 	width: 18px;
 }
 
-.formInput {
+.form-input {
 	color: white;
 	font-family:  MyriadPro, arial;
 	margin-left: 3px;
@@ -249,7 +249,7 @@ html,body{
 	background: linear-gradient(to bottom, rgb(242, 205, 135), rgb(244, 179, 102));
 }
 
-.formCol {
+.form-col {
 	margin-right: 20px;
 }
 
@@ -257,11 +257,11 @@ html,body{
 	margin-left: 232px;;
 }
 
-.formInputWrapper {
+.form-input-wrapper {
 	padding-top: 5px;
 }
 
-.unVisibleSubmit {
+.unvisible-submit {
 	display: none;
 }
 @media (max-width: 992px){
@@ -294,6 +294,6 @@ html,body{
 		display: block;
 	}
 }
-.continetFields {
+.continet-fields {
 	text-transform: capitalize;
 }
